@@ -4,9 +4,11 @@ A simple library for calculating and managing dates in the Protestant church cal
 
 ## Usage
 
-This project is intended to be used as a library in other Java/Gradle projects.
+This project is intended to be used as a library in other Java projects.
 
-### Adding to your Gradle project
+### Adding to your project
+
+#### Gradle
 
 Add the following to your `build.gradle` file:
 
@@ -20,26 +22,43 @@ dependencies {
 }
 ```
 
-### Example Usage (Java)
+#### Maven
+
+Add the following to your `pom.xml` file:
+
+```xml
+<dependency>
+    <groupId>com.jc.protestantcalendar</groupId>
+    <artifactId>protestant-church-calendar</artifactId>
+    <version>1.0.0</version>
+</dependency>
+```
+
+### Example Usage (Java - using Interfaces)
 
 ```java
+import com.jc.protestantcalendar.ILiturgicalCalculator;
+import com.jc.protestantcalendar.ILiturgicalCalendarService;
 import com.jc.protestantcalendar.LiturgicalCalculator;
-import com.jc.protestantcalendar.LiturgicalDay;
+import com.jc.protestantcalendar.LiturgicalCalendarService;
 
 import java.time.LocalDate;
-import java.util.List;
 import java.util.Locale;
+import java.util.ResourceBundle;
 
-public class MyCalendarApp {
-    public static void main(String[] args) {
-        LiturgicalCalculator calculator = new LiturgicalCalculator(Locale.ENGLISH);
-        List<LiturgicalDay> days = calculator.calculate(2025);
+// Instantiate services
+ResourceBundle messages = ResourceBundle.getBundle("messages", Locale.ENGLISH);
+ILiturgicalCalculator calculator = new LiturgicalCalculator(messages);
+ILiturgicalCalendarService calendarService = new LiturgicalCalendarService(Locale.ENGLISH, calculator);
 
-        for (LiturgicalDay day : days) {
-            System.out.println(day.getName() + ": " + day.getDate());
-        }
-    }
-}
+// Get liturgical days for a year
+calculator.calculate(2025);
+
+// Get liturgical week for a specific date
+calendarService.getLiturgicalWeekFor(LocalDate.now());
+
+// Get upcoming feasts
+calendarService.getUpcomingFeasts(LocalDate.now(), 5);
 ```
 
 ## Building from Source
