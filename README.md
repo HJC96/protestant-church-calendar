@@ -7,8 +7,6 @@ This library calculates the dates for the following key days in the Protestant l
 
 | Liturgical Day            | Korean Name (절기명)       |
 |---------------------------|---------------------------|
-| First Sunday of Advent    | 대림절 첫째 주일          |
-| Christmas Day             | 성탄절                   |
 | Epiphany                  | 주현절                   |
 | Transfiguration Sunday    | 산상변모주일             |
 | Ash Wednesday             | 재의 수요일              |
@@ -20,6 +18,8 @@ This library calculates the dates for the following key days in the Protestant l
 | Trinity Sunday            | 삼위일체주일             |
 | Reformation Day           | 종교개혁 기념일          |
 | Christ the King           | 왕이신 그리스도 주일      |
+| First Sunday of Advent    | 대림절 첫째 주일          |
+| Christmas Day             | 성탄절                   |
 
 ## Usage
 
@@ -60,11 +60,17 @@ Add the following to your `pom.xml` file:
 com.jc.protestantcalendar.LiturgicalCalculator calculator = new com.jc.protestantcalendar.LiturgicalCalculator(ResourceBundle.getBundle("messages", Locale.ENGLISH));
 com.jc.protestantcalendar.ILiturgicalCalendarService calendarService = new com.jc.protestantcalendar.LiturgicalCalendarService(calculator);
 
+// Calculate the liturgical calendar for the year 2025.
+calendarService.calculate(2025);
+// Epiphany: 2025-01-06, Transfiguration Sunday: 2025-03-02, Ash Wednesday: 2025-03-05, Palm Sunday: 2025-04-13, Maundy Thursday: 2025-04-17, Good Friday: 2025-04-18, Easter Sunday: 2025-04-20, Pentecost: 2025-06-08, Trinity Sunday: 2025-06-15, Reformation Day: 2025-10-31, Christ the King: 2025-11-23, First Sunday of Advent: 2025-11-30, Christmas Day: 2025-12-25
+
 // Get liturgical week for a specific date
 calendarService.getLiturgicalWeekFor(LocalDate.now());
+// Trinity Sunday after The Fourth Sunday week
 
 // Get upcoming feasts
 calendarService.getUpcomingFeasts(LocalDate.now(), 5);
+// Reformation Day: 2025-10-31, Christ the King: 2025-11-23, First Sunday of Advent: 2025-11-30, Christmas Day: 2025-12-25
 ```
 ## License
 
