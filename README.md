@@ -34,12 +34,8 @@
 `build.gradle` 파일에 다음을 추가하세요.
 
 ```groovy
-repositories {
-    mavenCentral() // 또는 배포된 저장소를 사용하세요
-}
-
 dependencies {
-    implementation 'com.jc.protestantcalendar:protestant-church-calendar:1.0.0' // 실제 group, artifact, version으로 대체
+    implementation 'com.jc.protestantcalendar:protestant-church-calendar:1.0.0' 
 }
 ```
 
@@ -48,11 +44,13 @@ dependencies {
 `pom.xml` 파일에 다음을 추가하세요.
 
 ```xml
-
-    com.jc.protestantcalendar
-    protestant-church-calendar
-    1.0.0
-
+<dependencies>
+    <dependency>
+        <groupId>com.jc.protestantcalendar</groupId>
+            <artifactId>protestant-church-calendar</artifactId>
+        <version>1.0.0</version>
+    </dependency>
+</dependencies>
 ```
 
 ### 예제 코드 (Java - 인터페이스 사용)
@@ -114,12 +112,8 @@ This project is intended to be used as a library in other Java projects.
 Add the following to your `build.gradle` file:
 
 ```groovy
-repositories {
-    mavenCentral() // Or your preferred repository if published there
-}
-
 dependencies {
-    implementation 'com.jc.protestantcalendar:protestant-church-calendar:1.0.0' // Replace with actual group, artifact, version
+    implementation 'com.jc.protestantcalendar:protestant-church-calendar:1.0.0' 
 }
 ```
 
@@ -128,11 +122,13 @@ dependencies {
 Add the following to your `pom.xml` file:
 
 ```xml
-<dependency>
-    <groupId>com.jc.protestantcalendar</groupId>
-    <artifactId>protestant-church-calendar</artifactId>
-    <version>1.0.0</version>
-</dependency>
+<dependencies>
+    <dependency>
+        <groupId>com.jc.protestantcalendar</groupId>
+        <artifactId>protestant-church-calendar</artifactId>
+        <version>1.0.0</version>
+    </dependency>
+</dependencies>
 ```
 
 ### Example Usage (Java - using Interfaces)
