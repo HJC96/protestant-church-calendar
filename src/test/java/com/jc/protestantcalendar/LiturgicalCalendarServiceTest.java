@@ -65,14 +65,11 @@ class LiturgicalCalendarServiceTest {
         assertThat(upcomingFeasts.get(2).getDate()).isAfterOrEqualTo(fromDate);
 
         // Verify specific feasts and their order for 2025 from Oct 1
-        // Expected: Christ the King (Nov 23), First Sunday of Advent (Nov 30), Christmas Day (Dec 25)
-        assertThat(upcomingFeasts.get(0).getKey()).isEqualTo("christ.the.king");
-        assertThat(upcomingFeasts.get(0).getDate()).isEqualTo(LocalDate.of(2025, 11, 23));
-
-        assertThat(upcomingFeasts.get(1).getKey()).isEqualTo("first.sunday.of.advent");
-        assertThat(upcomingFeasts.get(1).getDate()).isEqualTo(LocalDate.of(2025, 11, 30));
-
-        assertThat(upcomingFeasts.get(2).getKey()).isEqualTo("christmas.day");
-        assertThat(upcomingFeasts.get(2).getDate()).isEqualTo(LocalDate.of(2025, 12, 25));
-    }
+        assertThat(upcomingFeasts.get(0).getKey()).isEqualTo("reformation.day");
+        assertThat(upcomingFeasts.get(0).getDate()).isEqualTo(LocalDate.of(2025, 10, 31));
+        assertThat(upcomingFeasts.get(1).getKey()).isEqualTo("christ.the.king");
+        assertThat(upcomingFeasts.get(1).getDate()).isEqualTo(LocalDate.of(2025, 11, 23));
+        assertThat(upcomingFeasts.get(2).getKey()).isEqualTo("first.sunday.of.advent");
+        assertThat(upcomingFeasts.get(2).getDate()).isEqualTo(LocalDate.of(2025, 11, 30));
+        }
 }
