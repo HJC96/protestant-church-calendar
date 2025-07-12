@@ -37,19 +37,9 @@ Add the following to your `pom.xml` file:
 ### Example Usage (Java - using Interfaces)
 
 ```java
-import com.jc.protestantcalendar.ILiturgicalCalculator;
-import com.jc.protestantcalendar.ILiturgicalCalendarService;
-import com.jc.protestantcalendar.LiturgicalCalculator;
-import com.jc.protestantcalendar.LiturgicalCalendarService;
-
-import java.time.LocalDate;
-import java.util.Locale;
-import java.util.ResourceBundle;
-
 // Instantiate services
-ResourceBundle messages = ResourceBundle.getBundle("messages", Locale.ENGLISH);
-ILiturgicalCalculator calculator = new LiturgicalCalculator(messages);
-ILiturgicalCalendarService calendarService = new LiturgicalCalendarService(Locale.ENGLISH, calculator);
+com.jc.protestantcalendar.LiturgicalCalculator calculator = new com.jc.protestantcalendar.LiturgicalCalculator.LiturgicalCalculator(ResourceBundle.getBundle("messages", Locale.ENGLISH));
+com.jc.protestantcalendar.ILiturgicalCalendarService calendarService = new com.jc.protestantcalendar.LiturgicalCalendarService(calculator);
 
 // Get liturgical days for a year
 calculator.calculate(2025);
@@ -60,17 +50,6 @@ calendarService.getLiturgicalWeekFor(LocalDate.now());
 // Get upcoming feasts
 calendarService.getUpcomingFeasts(LocalDate.now(), 5);
 ```
-
-## Building from Source
-
-To build the library from source, navigate to the project root and run:
-
-```bash
-./gradlew build
-```
-
-This will generate the JAR file in the `build/libs` directory.
-
 ## License
 
 This project is licensed under the Apache License 2.0. See the [LICENSE](LICENSE) file for details.

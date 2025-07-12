@@ -10,14 +10,10 @@ import java.util.stream.Collectors;
 public class LiturgicalCalendarService implements ILiturgicalCalendarService {
     private final ResourceBundle messages;
     private final Map<Integer, List<LiturgicalDay>> calendarCache = new HashMap<>();
-    private final ILiturgicalCalculator calculator;
+    private final LiturgicalCalculator calculator;
 
-    public LiturgicalCalendarService(Locale locale) {
-        this(ResourceBundle.getBundle("messages", locale), new LiturgicalCalculator(ResourceBundle.getBundle("messages", locale)));
-    }
-
-    public LiturgicalCalendarService(ResourceBundle messages, ILiturgicalCalculator calculator) {
-        this.messages = messages;
+    public LiturgicalCalendarService(LiturgicalCalculator calculator) {
+        this.messages = calculator.getMessages();
         this.calculator = calculator;
     }
 
@@ -26,19 +22,13 @@ public class LiturgicalCalendarService implements ILiturgicalCalendarService {
         LocalDate currentSunday = date.with(TemporalAdjusters.previousOrSame(DayOfWeek.SUNDAY));
         LiturgicalDay seasonAnchor = findLastSeasonAnchorBefore(currentSunday);
 
-        String seasonNameKey = "season.after.pentecost";
-        if (seasonAnchor != null) {
-            if ("pentecost".equals(seasonAnchor.getKey())) {
-                seasonNameKey = "season.after.pentecost";
-            } else if ("epiphany".equals(seasonAnchor.getKey())) {
-                seasonNameKey = "season.after.epiphany";
-            }
-        }
-
         long daysBetween = ChronoUnit.DAYS.between(seasonAnchor.getDate(), currentSunday);
-        int weekNumber = (int) (daysBetween / 7) + 1;
+        int weekNumber = (int) (daysBetween / 7);
 
-        return new LiturgicalWeek(messages.getString(seasonNameKey), weekNumber);
+        String seasonAnchorString = seasonAnchor.toString();
+        String seasonNameKey = seasonAnchorString.substring(0, seasonAnchorString.indexOf(':'));
+
+        return new LiturgicalWeek(seasonNameKey, weekNumber, messages);
     }
 
     @Override
@@ -62,10 +52,7 @@ public class LiturgicalCalendarService implements ILiturgicalCalendarService {
         List<LiturgicalDay> feasts = new ArrayList<>(getYearlyCalendar(date.getYear()));
         feasts.addAll(getYearlyCalendar(date.getYear() - 1));
 
-        final List<String> seasonAnchorKeys = Arrays.asList("pentecost", "epiphany", "christmas.day");
-
         return feasts.stream()
-                .filter(day -> seasonAnchorKeys.contains(day.getKey()))
                 .filter(day -> !day.getDate().isAfter(date))
                 .max(Comparator.comparing(LiturgicalDay::getDate))
                 .orElse(null);

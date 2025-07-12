@@ -10,11 +10,11 @@ import java.util.Locale;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 class LiturgicalCalculatorTest {
 
-    private ILiturgicalCalculator calculator;
+    private LiturgicalCalculator calculator;
 
     @BeforeEach
     void setUp() {
@@ -39,7 +39,7 @@ class LiturgicalCalculatorTest {
                 .filter(day -> day.getKey().equals(key))
                 .findFirst();
 
-        assertTrue(foundDay.isPresent(), "Day with key '" + key + "' should exist.");
-        assertEquals(expectedDate, foundDay.get().getDate(), "Date for '" + key + "' should match.");
+        assertThat(foundDay).isPresent();
+        assertThat(foundDay.get().getDate()).isEqualTo(expectedDate);
     }
 }

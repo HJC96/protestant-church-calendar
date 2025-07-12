@@ -3,14 +3,13 @@ package com.jc.protestantcalendar;
 import java.time.LocalDate;
 import java.util.*;
 
-public class LiturgicalCalculator implements ILiturgicalCalculator {
+public class LiturgicalCalculator{
     private final ResourceBundle messages;
 
     public LiturgicalCalculator(ResourceBundle messages) {
         this.messages = messages;
     }
 
-    @Override
     public List<LiturgicalDay> calculate(int year) {
         List<LiturgicalDay> events = new ArrayList<>();
         LocalDate easterDate = calculateEaster(year);
@@ -54,5 +53,9 @@ public class LiturgicalCalculator implements ILiturgicalCalculator {
         int month = (h + l - 7 * m + 114) / 31;
         int day = ((h + l - 7 * m + 114) % 31) + 1;
         return LocalDate.of(year, month, day);
+    }
+
+    public ResourceBundle getMessages() {
+        return messages;
     }
 }
