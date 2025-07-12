@@ -1,0 +1,32 @@
+plugins {
+    id 'java' // Changed from 'application' to 'java' for library project
+}
+
+version = '1.0.0'
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // JUnit 5 (Jupiter) for testing
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+// For creating a standard JAR (no longer a Fat JAR with Main-Class)
+jar {
+    // manifest { attributes 'Main-Class': application.mainClass.get() } // Removed
+    // from { configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) } } // Removed for standard JAR
+}
+
+// distributions { ... } // Removed as it's now a library
