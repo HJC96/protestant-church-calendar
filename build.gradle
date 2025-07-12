@@ -1,5 +1,6 @@
 plugins {
     id 'java' // Changed from 'application' to 'java' for library project
+    id 'maven-publish' // 이 줄을 추가하세요
 }
 
 version = '1.0.0'
@@ -33,3 +34,16 @@ jar {
 }
 
 // distributions { ... } // Removed as it's now a library
+
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+                groupId = 'com.github.HJC96'
+                artifactId = 'protestant-church-calendar'
+                version = 'v1.0.0'
+            }
+        }
+    }
+}
