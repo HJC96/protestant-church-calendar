@@ -2,6 +2,25 @@
 
 A simple library for calculating and managing dates in the Protestant church calendar.
 
+# Features
+This library calculates the dates for the following key days in the Protestant liturgical year. Both English and Korean are supported via resource bundles.
+
+| Liturgical Day            | Korean Name (절기명)       |
+|---------------------------|---------------------------|
+| First Sunday of Advent    | 대림절 첫째 주일          |
+| Christ the King           | 왕이신 그리스도 주일      |
+| Christmas Day             | 성탄절                   |
+| Epiphany                  | 주현절                   |
+| Transfiguration Sunday    | 산상변모주일             |
+| Ash Wednesday             | 재의 수요일              |
+| Palm Sunday               | 종려 주일                |
+| Maundy Thursday           | 세족 목요일              |
+| Good Friday               | 성금요일                 |
+| Easter Sunday             | 부활절                   |
+| Pentecost                 | 성령강림절               |
+| Trinity Sunday            | 삼위일체주일             |
+| Reformation Day           | 종교개혁 기념일          |
+
 ## Usage
 
 This project is intended to be used as a library in other Java projects.
@@ -38,11 +57,8 @@ Add the following to your `pom.xml` file:
 
 ```java
 // Instantiate services
-com.jc.protestantcalendar.LiturgicalCalculator calculator = new com.jc.protestantcalendar.LiturgicalCalculator.LiturgicalCalculator(ResourceBundle.getBundle("messages", Locale.ENGLISH));
+com.jc.protestantcalendar.LiturgicalCalculator calculator = new com.jc.protestantcalendar.LiturgicalCalculator(ResourceBundle.getBundle("messages", Locale.ENGLISH));
 com.jc.protestantcalendar.ILiturgicalCalendarService calendarService = new com.jc.protestantcalendar.LiturgicalCalendarService(calculator);
-
-// Get liturgical days for a year
-calculator.calculate(2025);
 
 // Get liturgical week for a specific date
 calendarService.getLiturgicalWeekFor(LocalDate.now());
