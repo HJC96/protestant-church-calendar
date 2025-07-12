@@ -8,18 +8,16 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class LiturgicalCalendarService implements ILiturgicalCalendarService {
-    private final Locale locale;
     private final ResourceBundle messages;
     private final Map<Integer, List<LiturgicalDay>> calendarCache = new HashMap<>();
     private final ILiturgicalCalculator calculator;
 
     public LiturgicalCalendarService(Locale locale) {
-        this(locale, new LiturgicalCalculator(locale));
+        this(ResourceBundle.getBundle("messages", locale), new LiturgicalCalculator(ResourceBundle.getBundle("messages", locale)));
     }
 
-    public LiturgicalCalendarService(Locale locale, ILiturgicalCalculator calculator) {
-        this.locale = locale;
-        this.messages = ResourceBundle.getBundle("messages", locale);
+    public LiturgicalCalendarService(ResourceBundle messages, ILiturgicalCalculator calculator) {
+        this.messages = messages;
         this.calculator = calculator;
     }
 

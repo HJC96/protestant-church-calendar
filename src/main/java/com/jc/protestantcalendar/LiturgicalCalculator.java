@@ -6,8 +6,8 @@ import java.util.*;
 public class LiturgicalCalculator implements ILiturgicalCalculator {
     private final ResourceBundle messages;
 
-    public LiturgicalCalculator(Locale locale) {
-        this.messages = ResourceBundle.getBundle("messages", locale);
+    public LiturgicalCalculator(ResourceBundle messages) {
+        this.messages = messages;
     }
 
     @Override

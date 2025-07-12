@@ -8,6 +8,7 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Locale;
 import java.util.Optional;
+import java.util.ResourceBundle;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -18,7 +19,8 @@ class LiturgicalCalculatorTest {
     @BeforeEach
     void setUp() {
         // Using English locale for consistent testing
-        calculator = new LiturgicalCalculator(Locale.ENGLISH);
+        ResourceBundle messages = ResourceBundle.getBundle("messages", Locale.ENGLISH);
+        calculator = new LiturgicalCalculator(messages);
     }
 
     @Test
