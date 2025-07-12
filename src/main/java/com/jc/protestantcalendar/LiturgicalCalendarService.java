@@ -18,6 +18,11 @@ public class LiturgicalCalendarService implements ILiturgicalCalendarService {
     }
 
     @Override
+    public List<LiturgicalDay> calculate(int year) {
+        return calculator.calculate(year);
+    }
+
+    @Override
     public LiturgicalWeek getLiturgicalWeekFor(LocalDate date) {
         LocalDate currentSunday = date.with(TemporalAdjusters.previousOrSame(DayOfWeek.SUNDAY));
         LiturgicalDay seasonAnchor = findLastSeasonAnchorBefore(currentSunday);

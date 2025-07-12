@@ -1,5 +1,6 @@
 package com.jc.protestantcalendar;
 
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class LiturgicalWeek {
@@ -54,6 +55,10 @@ public class LiturgicalWeek {
     }
 
     private String message(String key) {
-        return messages.getString("week.suffix") +  messages.getString(key);
+        if(messages.getLocale().equals(Locale.ENGLISH)){
+            return messages.getString(key)+ messages.getString("week.suffix"); }
+        else{
+            return messages.getString("week.suffix") + messages.getString(key);
+        }
     }
 }
