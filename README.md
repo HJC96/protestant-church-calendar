@@ -30,8 +30,7 @@
 ### 프로젝트에 추가하기
 
 #### Gradle
-
-`build.gradle` 파일에 다음을 추가하세요.
+`build.gradle` 파일에 원하는 방식으로 의존성을 추가해주세요.
 
 ```groovy
 dependencies {
@@ -41,7 +40,7 @@ dependencies {
 
 #### Maven
 
-`pom.xml` 파일에 다음을 추가하세요.
+`pom.xml` 파일에 원하는 방식으로 의존성을 추가해주세요.
 
 ```xml
 <dependencies>
@@ -108,8 +107,7 @@ This project is intended to be used as a library in other Java projects.
 ### Adding to your project
 
 #### Gradle
-
-Add the following to your `build.gradle` file:
+Add the dependency to your build.gradle in any way you prefer:
 
 ```groovy
 dependencies {
@@ -118,8 +116,7 @@ dependencies {
 ```
 
 #### Maven
-
-Add the following to your `pom.xml` file:
+Add the dependency to your pom.xml in any way you prefer:
 
 ```xml
 <dependencies>
