@@ -14,15 +14,17 @@ public class LiturgicalCalculator{
         List<LiturgicalDay> events = new ArrayList<>();
         LocalDate easterDate = calculateEaster(year);
 
-        addDay(events, "easter.sunday", easterDate);
+        addDay(events, "transfiguration.sunday", easterDate.minusDays(49));
         addDay(events, "ash.wednesday", easterDate.minusDays(46));
         addDay(events, "palm.sunday", easterDate.minusDays(7));
+        addDay(events, "maundy.thursday", easterDate.minusDays(3));
         addDay(events, "good.friday", easterDate.minusDays(2));
         addDay(events, "pentecost", easterDate.plusDays(49));
+        addDay(events, "easter.sunday", easterDate);
         addDay(events, "trinity.sunday", easterDate.plusDays(56));
         addDay(events, "epiphany", LocalDate.of(year, 1, 6));
+        addDay(events, "reformation.day", LocalDate.of(year, 10, 31));
         addDay(events, "christmas.day", LocalDate.of(year, 12, 25));
-
         LocalDate adventStart = LocalDate.of(year, 12, 25)
                 .minusDays(LocalDate.of(year, 12, 25).getDayOfWeek().getValue() % 7)
                 .minusWeeks(3);
