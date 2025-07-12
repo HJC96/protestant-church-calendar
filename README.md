@@ -8,7 +8,6 @@ This library calculates the dates for the following key days in the Protestant l
 | Liturgical Day            | Korean Name (절기명)       |
 |---------------------------|---------------------------|
 | First Sunday of Advent    | 대림절 첫째 주일          |
-| Christ the King           | 왕이신 그리스도 주일      |
 | Christmas Day             | 성탄절                   |
 | Epiphany                  | 주현절                   |
 | Transfiguration Sunday    | 산상변모주일             |
@@ -20,6 +19,7 @@ This library calculates the dates for the following key days in the Protestant l
 | Pentecost                 | 성령강림절               |
 | Trinity Sunday            | 삼위일체주일             |
 | Reformation Day           | 종교개혁 기념일          |
+| Christ the King           | 왕이신 그리스도 주일      |
 
 ## Usage
 
