@@ -144,7 +144,7 @@ calendarService.getLiturgicalWeekFor(LocalDate.now());
 // Trinity Sunday after The Fourth Sunday week
 
 // Get upcoming feasts
-        calendarService.getUpcomingFeasts(LocalDate.now(), 5);
+calendarService.getUpcomingFeasts(LocalDate.now(), 5);
 // Reformation Day: 2025-10-31, Christ the King: 2025-11-23, First Sunday of Advent: 2025-11-30, Christmas Day: 2025-12-25
 ```
 ## License
